@@ -1,3 +1,16 @@
+// Type declarations for Orion/Safari webkit APIs
+declare global {
+  interface Window {
+    webkit?: {
+      messageHandlers: {
+        kagiEvents?: any;
+        base?: any;
+        [key: string]: any;
+      };
+    };
+  }
+}
+
 export const isChrome = () => {
   return chrome.runtime.getURL('').startsWith('chrome-extension://');
 };
@@ -12,10 +25,16 @@ export const isFirefox = () => {
 
 export const isSafari = () => {
   try {
-    return (
-      chrome.runtime.getURL('').startsWith('safari-web-extension://') ||
-      browser.runtime.getURL('').startsWith('safari-web-extension://')
-    );
+    // Check for standard Safari scheme
+    const hasSafariScheme = chrome.runtime.getURL('').startsWith('safari-web-extension://') ||
+    browser.runtime.getURL('').startsWith('safari-web-extension://')
+
+    // Check for Orion (which loads Safari extensions with chrome-extension:// scheme)
+    const isOrion = typeof window !== 'undefined' &&
+      window.webkit &&
+      window.webkit.messageHandlers;
+
+    return hasSafariScheme || isOrion;
   } catch {
     return false;
   }

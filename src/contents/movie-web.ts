@@ -1,20 +1,9 @@
 import { relayMessage } from '@plasmohq/messaging';
 import type { PlasmoCSConfig } from 'plasmo';
+import { isSafari } from '~utils/extension';
 
 export const config: PlasmoCSConfig = {
   matches: ['<all_urls>'],
-};
-
-// Safari requires a delay before setting up messaging
-const isSafari = () => {
-  try {
-    return (
-      chrome.runtime.getURL('').startsWith('safari-web-extension://') ||
-      (typeof browser !== 'undefined' && browser.runtime.getURL('').startsWith('safari-web-extension://'))
-    );
-  } catch {
-    return false;
-  }
 };
 
 const setupMessaging = () => {

@@ -1,31 +1,27 @@
-# Safari Extension Development Guide
+# Safari Extension Support
 
-## Building for Safari
+## Overview
 
-To build the extension specifically for Safari:
+This extension now supports Safari through a unified cross-platform build. The same `chrome-mv3` build works in Chrome and Safari (including Orion browser).
 
-```bash
-pnpm build:safari
-```
+## Building for All Platforms
 
-## Development for Safari
-
-For Safari development (without hot-reload to avoid WebSocket issues):
+Build the extension for all platforms:
 
 ```bash
-pnpm dev:safari
+pnpm build
 ```
 
 ## Safari Installation & Testing
 
 ### 1. Load Extension in Safari
 
-1. Build the extension: `pnpm build:safari`
+1. Build the extension: `pnpm build`
 2. Open Safari and go to Safari → Preferences → Advanced
 3. Check "Show Develop menu in menu bar"
 4. Go to Develop → Allow Unsigned Extensions (for development)
 5. Go to Safari → Preferences → Extensions
-6. Click the "+" button and select the `build/safari-mv3-prod` folder
+6. Click the "+" button and select the `build/chrome-mv3-prod` folder
 
 ### 2. Grant Permissions
 
@@ -47,7 +43,7 @@ Safari requires manual permission setup:
 
 #### Issue: WebSocket Connection Blocked
 
-**Fix**: Use `pnpm dev:safari` which disables hot-reload WebSockets that Safari blocks.
+**Fix**: Safari blocks WebSocket connections for security. The extension automatically detects Safari and applies appropriate delays and retry logic.
 
 #### Issue: Permissions Not Working
 
@@ -69,9 +65,9 @@ Safari requires manual permission setup:
 - [ ] Extension loads in Safari Extensions preferences
 - [ ] Website permissions are granted in Safari Preferences → Websites
 - [ ] No "Invalid call to runtime.connect()" errors
-- [ ] No WebSocket connection warnings
-- [ ] Permission guide shows correctly when Safari is detected
+- [ ] Permission guide shows correctly when Safari/Orion is detected
 - [ ] All message handlers work properly
+- [ ] Same build works in Chrome, Firefox, and Safari
 
 ### 6. Production Deployment
 
@@ -80,4 +76,6 @@ For Safari App Store distribution:
 1. You'll need to create a native macOS app wrapper
 2. Use Xcode to create the Safari extension project
 3. Follow Apple's Safari extension guidelines
-4. The built extension in `build/safari-mv3-prod` can be embedded in the macOS app
+4. The built extension in `build/chrome-mv3-prod` can be embedded in the macOS app
+
+For web stores (Chrome, Firefox, Edge), use the same `build/chrome-mv3-prod` folder.
