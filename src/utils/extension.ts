@@ -42,7 +42,7 @@ export const isSafari = () => {
 
 export const getBrowserAPI = () => {
   if (isSafari()) {
-    return typeof browser !== 'undefined' ? browser : chrome;
+    return browser;
   }
   if (isFirefox()) {
     return browser;
