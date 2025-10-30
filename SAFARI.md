@@ -1,5 +1,8 @@
 # Safari Extension Support
 
+LIMITATIONS:
+Due to webkit's declarative net request API not being fully featured, the extension CANNOT make requests with custom headers. This is a limitation on Safari's end. This means that the Safari extension will only unlock a few sources that are IP locked but not referrer locked. It can however bypass cors.
+
 ## Overview
 
 This extension now supports Safari through a unified cross-platform build. The same `chrome-mv3` build works in Chrome and Safari (including Orion browser).
@@ -21,7 +24,7 @@ pnpm build
 3. Check "Show Develop menu in menu bar"
 4. Go to Develop → Allow Unsigned Extensions (for development)
 5. Go to Safari → Preferences → Extensions
-6. Click the "+" button and select the `build/chrome-mv3-prod` folder
+6. Click the "+" button and select the `build/chrome-mv3-prod` folder. Yes, it's a chrome build but it will work.
 
 ### 2. Grant Permissions
 
@@ -55,27 +58,9 @@ Safari requires manual permission setup:
 
 ### 4. Safari-Specific Behavior
 
+- **No header modifications** As of 2025, webkit's declarative net request API is "unfinished" and you cannot change headers reliably. Due to this, most sources will not work. 
 - **No Runtime Permission Requests**: Safari doesn't support `chrome.permissions.request()` - users must enable manually
 - **Different Timing**: Safari background scripts load differently - we added delays and retry logic
 - **Security Policies**: Safari blocks insecure content more aggressively than Chrome
 - **Manifest Differences**: Safari requires `host_permissions` for proper website access
 
-### 5. Testing Checklist
-
-- [ ] Extension loads in Safari Extensions preferences
-- [ ] Website permissions are granted in Safari Preferences → Websites
-- [ ] No "Invalid call to runtime.connect()" errors
-- [ ] Permission guide shows correctly when Safari/Orion is detected
-- [ ] All message handlers work properly
-- [ ] Same build works in Chrome, Firefox, and Safari
-
-### 6. Production Deployment
-
-For Safari App Store distribution:
-
-1. You'll need to create a native macOS app wrapper
-2. Use Xcode to create the Safari extension project
-3. Follow Apple's Safari extension guidelines
-4. The built extension in `build/chrome-mv3-prod` can be embedded in the macOS app
-
-For web stores (Chrome, Firefox, Edge), use the same `build/chrome-mv3-prod` folder.
