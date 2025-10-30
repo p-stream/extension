@@ -2,7 +2,9 @@ import { useCallback } from 'react';
 
 import { Button } from '~components/Button';
 import { Icon } from '~components/Icon';
+import SafariPermissionGuide from '~components/SafariPermissionGuide';
 import { usePermission } from '~hooks/usePermission';
+import { isSafari } from '~utils/extension';
 
 import './PermissionRequest.css';
 
@@ -24,6 +26,10 @@ export default function PermissionRequest() {
   const grant = useCallback(() => {
     grantPermission().then(() => window.close());
   }, [grantPermission]);
+
+  if (isSafari()) {
+    return <SafariPermissionGuide />;
+  }
 
   return (
     <div className="container permission-request">

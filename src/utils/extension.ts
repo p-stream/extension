@@ -9,3 +9,24 @@ export const isFirefox = () => {
     return false;
   }
 };
+
+export const isSafari = () => {
+  try {
+    return (
+      chrome.runtime.getURL('').startsWith('safari-web-extension://') ||
+      browser.runtime.getURL('').startsWith('safari-web-extension://')
+    );
+  } catch {
+    return false;
+  }
+};
+
+export const getBrowserAPI = () => {
+  if (isSafari()) {
+    return typeof browser !== 'undefined' ? browser : chrome;
+  }
+  if (isFirefox()) {
+    return browser;
+  }
+  return chrome;
+};

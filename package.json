@@ -6,10 +6,13 @@
   "author": "P-Stream",
   "scripts": {
     "dev": "plasmo dev",
+    "dev:safari": "plasmo dev --target=safari-mv3 --no-hmr",
     "build": "plasmo build",
     "build:firefox": "plasmo build --target=firefox-mv3",
+    "build:safari": "plasmo build --target=safari-mv3",
     "package": "plasmo package",
     "package:firefox": "plasmo package --target=firefox-mv3",
+    "package:safari": "plasmo package --target=safari-mv3",
     "lint": "eslint --ext .tsx,.ts src",
     "lint:fix": "eslint --fix --ext .tsx,.ts src",
     "lint:report": "eslint --ext .tsx,.ts --output-file eslint_report.json --format json src",
@@ -18,7 +21,7 @@
   "dependencies": {
     "@plasmohq/messaging": "^0.6.2",
     "@plasmohq/storage": "^1.11.0",
-    "plasmo": "0.89.4",
+    "plasmo": "0.90.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "sharp": "^0.34.3"
@@ -46,9 +49,13 @@
     "permissions": [
       "declarativeNetRequest",
       "activeTab",
-      "cookies"
+      "cookies",
+      "storage"
     ],
     "optional_host_permissions": [
+      "<all_urls>"
+    ],
+    "host_permissions": [
       "<all_urls>"
     ],
     "browser_specific_settings": {

@@ -1,0 +1,24 @@
+{
+  "name": "P-Stream Safari Extension",
+  "displayName": "P-Stream Safari Extension",
+  "description": "Enhance your streaming experience with just one click - Safari version",
+  "author": "P-Stream",
+  "version": "1.3.2",
+  "safari": {
+    "bundleIdentifier": "com.pstream.safari.extension",
+    "minimumVersion": "14.0",
+    "appName": "P-Stream Extension",
+    "developerIdentifier": "YOUR_TEAM_ID"
+  },
+  "permissions": {
+    "storage": true,
+    "declarativeNetRequest": true,
+    "activeTab": true,
+    "cookies": true,
+    "hostPermissions": ["<all_urls>"]
+  },
+  "background": {
+    "persistent": false,
+    "type": "module"
+  }
+}

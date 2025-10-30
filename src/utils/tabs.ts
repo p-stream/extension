@@ -1,4 +1,4 @@
-import { isChrome } from './extension';
+import { getBrowserAPI } from './extension';
 
 export function queryCurrentDomain(cb: (domain: string | null) => void) {
   const handle = (tabUrl: string | undefined) => {
@@ -6,27 +6,18 @@ export function queryCurrentDomain(cb: (domain: string | null) => void) {
     else cb(tabUrl);
   };
   const ops = { active: true, currentWindow: true } as const;
-
-  if (isChrome()) chrome.tabs.query(ops).then((tabs) => handle(tabs[0]?.url));
-  else browser.tabs.query(ops).then((tabs) => handle(tabs[0]?.url));
+  const browserAPI = getBrowserAPI();
+  (browserAPI.tabs as any).query(ops).then((tabs: any[]) => handle(tabs[0]?.url));
 }
 
 export function listenToTabChanges(cb: () => void) {
-  if (isChrome()) {
-    chrome.tabs.onActivated.addListener(cb);
-    chrome.tabs.onUpdated.addListener(cb);
-  } else if (browser) {
-    browser.tabs.onActivated.addListener(cb);
-    browser.tabs.onUpdated.addListener(cb);
-  }
+  const browserAPI = getBrowserAPI();
+  (browserAPI.tabs as any).onActivated.addListener(cb);
+  (browserAPI.tabs as any).onUpdated.addListener(cb);
 }
 
 export function stopListenToTabChanges(cb: () => void) {
-  if (isChrome()) {
-    chrome.tabs.onActivated.removeListener(cb);
-    chrome.tabs.onUpdated.removeListener(cb);
-  } else if (browser) {
-    browser.tabs.onActivated.removeListener(cb);
-    browser.tabs.onUpdated.removeListener(cb);
-  }
+  const browserAPI = getBrowserAPI();
+  (browserAPI.tabs as any).onActivated.removeListener(cb);
+  (browserAPI.tabs as any).onUpdated.removeListener(cb);
 }
