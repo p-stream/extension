@@ -10,3 +10,13 @@ We use pnpm with the latest version of NodeJS.
 pnpm i
 pnpm dev
 ```
+
+## Building for production
+
+```sh
+pnpm i
+pnpm build
+or
+pnpm build:firefox
+```
+
