@@ -9,6 +9,10 @@ export function BottomLabel() {
       {version}
       <div className="dot" />
       P-Stream
+      <div className="dot" />
+      <a href="https://github.com/p-stream/extension" target="_blank" rel="noopener noreferrer" className="github-link">
+        Github ↗
+      </a>
     </h3>
   );
 }
