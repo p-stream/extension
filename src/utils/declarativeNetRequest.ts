@@ -1,5 +1,4 @@
 import { isChrome } from './extension';
-import { modifiableResponseHeaders } from './storage';
 
 interface DynamicRule {
   ruleId: number;

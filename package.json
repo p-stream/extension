@@ -16,31 +16,31 @@
     "preinstall": "npx -y only-allow pnpm"
   },
   "dependencies": {
-    "@plasmohq/messaging": "^0.6.2",
-    "@plasmohq/storage": "^1.11.0",
-    "plasmo": "0.89.4",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "sharp": "^0.34.3"
+    "@plasmohq/messaging": "^0.7.2",
+    "@plasmohq/storage": "^1.15.0",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "sharp": "^0.34.5"
   },
   "devDependencies": {
-    "@types/chrome": "0.0.251",
-    "@types/firefox-webext-browser": "^120.0.4",
-    "@types/node": "20.9.0",
-    "@types/react": "18.2.37",
-    "@types/react-dom": "18.2.15",
-    "@typescript-eslint/eslint-plugin": "^6.21.0",
-    "@typescript-eslint/parser": "^6.21.0",
-    "eslint": "^8.57.0",
+    "@types/chrome": "0.1.27",
+    "@types/firefox-webext-browser": "^120.0.5",
+    "@types/node": "24.10.0",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
+    "@typescript-eslint/eslint-plugin": "^8.46.3",
+    "@typescript-eslint/parser": "^8.46.3",
+    "eslint": "^8.57.1",
     "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-import-resolver-typescript": "^3.6.1",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-prettier": "^5.2.1",
-    "eslint-plugin-react": "^7.35.0",
-    "eslint-plugin-react-hooks": "^4.6.2",
-    "prettier": "3.0.3",
-    "typescript": "5.2.2"
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-import-resolver-typescript": "^3.10.1",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-prettier": "^5.5.4",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "plasmo": "0.90.5",
+    "prettier": "3.6.2",
+    "typescript": "5.9.3"
   },
   "manifest": {
     "permissions": [
