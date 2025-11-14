@@ -53,7 +53,7 @@
     ],
     "browser_specific_settings": {
       "gecko": {
-        "id": "{de055456-589b-45fe-8342-c685a7ffb424}",
+        "id": "{e613be14-63c3-4bd9-8a4a-502c12bcf201}",
         "data_collection_permissions": {
           "version": 1,
           "required": [
@@ -78,7 +78,7 @@
         }
       },
       "gecko_android": {
-        "id": "{de055456-589b-45fe-8342-c685a7ffb424}",
+        "id": "{e613be14-63c3-4bd9-8a4a-502c12bcf201}",
         "data_collection_permissions": {
           "version": 1,
           "required": [
