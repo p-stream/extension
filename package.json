@@ -1,7 +1,7 @@
 {
   "name": "@p-stream/extension",
   "displayName": "P-Stream extension",
-  "version": "1.3.6",
+  "version": "1.3.7",
   "description": "Enhance your streaming experience with just one click",
   "author": "P-Stream",
   "scripts": {
@@ -9,7 +9,7 @@
     "build": "plasmo build",
     "build:firefox": "plasmo build --target=firefox-mv3",
     "package": "plasmo package",
-    "package:firefox": "plasmo package --target=firefox-mv3",
+    "package:firefox": "npm run build:firefox && plasmo package --target=firefox-mv3 && mv build/firefox-mv3-prod.zip build/firefox-mv3-prod.xpi",
     "lint": "eslint --ext .tsx,.ts src",
     "lint:fix": "eslint --fix --ext .tsx,.ts src",
     "lint:report": "eslint --ext .tsx,.ts --output-file eslint_report.json --format json src",
@@ -55,50 +55,20 @@
       "gecko": {
         "id": "{e613be14-63c3-4bd9-8a4a-502c12bcf201}",
         "data_collection_permissions": {
-          "version": 1,
           "required": [
             "browsingActivity",
             "authenticationInfo",
             "websiteContent"
-          ],
-          "data_collection": [
-            {
-              "collection": "browsing_history",
-              "purpose": "The extension needs to know which websites the user is visiting to determine if enhanced streaming features should be enabled for whitelisted domains."
-            },
-            {
-              "collection": "cookies",
-              "purpose": "The extension accesses cookies for supported streaming websites to provide seamless streaming functionality and authentication."
-            },
-            {
-              "collection": "website_content",
-              "purpose": "The extension modifies HTTP requests and responses to enhance streaming capabilities on whitelisted sites."
-            }
           ]
         }
       },
       "gecko_android": {
         "id": "{e613be14-63c3-4bd9-8a4a-502c12bcf201}",
         "data_collection_permissions": {
-          "version": 1,
           "required": [
             "browsingActivity",
             "authenticationInfo",
             "websiteContent"
-          ],
-          "data_collection": [
-            {
-              "collection": "browsing_history",
-              "purpose": "The extension needs to know which websites the user is visiting to determine if enhanced streaming features should be enabled for whitelisted domains."
-            },
-            {
-              "collection": "cookies",
-              "purpose": "The extension accesses cookies for supported streaming websites to provide seamless streaming functionality and authentication."
-            },
-            {
-              "collection": "website_content",
-              "purpose": "The extension modifies HTTP requests and responses to enhance streaming capabilities on whitelisted sites."
-            }
           ]
         }
       }
